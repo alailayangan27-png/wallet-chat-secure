@@ -5,6 +5,5 @@ export async function GET(req) {
   const address = searchParams.get("address");
 
   const publicKey = await redis.get(`pub:${address}`);
-
   return Response.json({ publicKey });
 }

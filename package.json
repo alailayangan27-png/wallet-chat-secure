@@ -1,5 +1,5 @@
 {
-  "name": "wallet-chat-secure",
+  "name": "cs-chat-full",
   "private": true,
   "scripts": {
     "dev": "next dev"

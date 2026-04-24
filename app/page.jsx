@@ -13,13 +13,10 @@ export default function Home() {
 
     const init = async () => {
       let priv = localStorage.getItem("chat_priv");
-      let pub = localStorage.getItem("chat_pub");
 
-      if (!priv || !pub) {
+      if (!priv) {
         const kp = await generateKeyPair();
-
         localStorage.setItem("chat_priv", kp.privateKeyB64);
-        localStorage.setItem("chat_pub", kp.publicKeyB64);
 
         await fetch("/api/save-key", {
           method: "POST",
@@ -35,17 +32,12 @@ export default function Home() {
   }, [address]);
 
   if (!isConnected) {
-    return (
-      <button onClick={() => connect({ connector: connectors[0] })}>
-        Connect Wallet
-      </button>
-    );
+    return <button onClick={() => connect({ connector: connectors[0] })}>Connect Wallet</button>;
   }
 
   return (
-    <div>
-      <p>{address}</p>
-      <a href="/chat">Enter Chat</a>
+    <div style={{ padding: 20 }}>
+      <a href="/chat">Open Customer Support</a>
     </div>
   );
 }
